@@ -31,7 +31,6 @@ public class PlayerAttack : MonoBehaviour
         foreach(Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<Enemmy>().TakeDamage(PlayerDamage);
-            enemy.GetComponent<SpriteRenderer>().material.color= Color.red;
           
         }
     }

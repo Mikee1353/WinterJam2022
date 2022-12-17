@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemmy : MonoBehaviour
 {
+    public Rigidbody2D rb;
     public int maxHealth = 100;
     public int currentHealth;
     public Transform attackPoint;
@@ -24,6 +25,7 @@ public class Enemmy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        rb.AddForce(new Vector2(10000, 1));
 
     }
     private void EnemyAttack()
