@@ -42,12 +42,24 @@ public class Enemmy : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
 
     }
+    private bool isAttacking()
+    {
+        return Physics2D.OverlapCircle(attackPoint.position, attackRange, enemyLayers);
+    }
+
     private void Update()
     {
         if(Time.time >= nextAttackTime)
         {
-        EnemyAttack();
-        nextAttackTime = Time.time +1f / attackRate;
+
+            if (isAttacking())
+            {
+             EnemyAttack();
+             nextAttackTime = Time.time +1f / attackRate;
+
+            }
+
+            
 
         }
         
