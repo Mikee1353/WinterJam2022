@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement")]
     public float moveSpeed;
+    private float velocity = 10f;
 
     public Transform orientation;
 
@@ -30,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        MyInput();
+        MyInput();        
     }
 
     private void MyInput()
@@ -41,8 +42,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
+        
         MoveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+      
+        rb.AddForce(MoveDirection.normalized * moveSpeed * 10, ForceMode.Force);
+        rb.velocity = rb.velocity * 0.979f;
 
-        rb.AddForce(MoveDirection.normalized * moveSpeed * 10f, ForceMode.Acceleration);
     }
 }
