@@ -28,7 +28,7 @@ public class Enemmy : MonoBehaviour
     }
     private void EnemyAttack()
     {
-        animator.SetTrigger("EnemyAttack");
+        
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {
@@ -54,8 +54,9 @@ public class Enemmy : MonoBehaviour
 
             if (isAttacking())
             {
-             EnemyAttack();
-             nextAttackTime = Time.time +1f / attackRate;
+                animator.SetTrigger("EnemyAttack");
+                //EnemyAttack();
+                nextAttackTime = Time.time +1f / attackRate;
 
             }
 

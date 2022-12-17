@@ -11,6 +11,7 @@ public class PlayerAttack : MonoBehaviour
     public int PlayerDamage = 25;
     public float attackRate = 2f;
     float nextAttackTime = 0f;
+
     private void Update()
     {
         if(Time.time >= nextAttackTime)
@@ -30,6 +31,8 @@ public class PlayerAttack : MonoBehaviour
         foreach(Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<Enemmy>().TakeDamage(PlayerDamage);
+            enemy.GetComponent<SpriteRenderer>().material.color= Color.red;
+          
         }
     }
     private void OnDrawGizmosSelected()
@@ -38,4 +41,6 @@ public class PlayerAttack : MonoBehaviour
             return;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
+
+
 }
