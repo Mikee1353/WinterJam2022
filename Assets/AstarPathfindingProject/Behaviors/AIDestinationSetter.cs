@@ -16,6 +16,7 @@ namespace Pathfinding {
 	public class AIDestinationSetter : VersionedMonoBehaviour {
 		/// <summary>The object that the AI should move to</summary>
 		public Transform target;
+		public Animator anim;
 		IAstarAI ai;
 
 		void OnEnable () {
@@ -32,8 +33,17 @@ namespace Pathfinding {
 		}
 
 		/// <summary>Updates the AI's destination every frame</summary>
-		void Update () {
-			if (target != null && ai != null && gameObject.transform.position.x - target.position.x <= 5 && -5<= gameObject.transform.position.x - target.position.x) ai.destination = target.position;
+		void Update()
+		{
+			if (target != null && ai != null && gameObject.transform.position.x - target.position.x <= 5 && -5 <= gameObject.transform.position.x - target.position.x)
+			{
+				anim.SetBool("enemyMove", true);
+				ai.destination = target.position;
+            }
+            else
+            {
+				anim.SetBool("enemyMove", false);
+            }
 		}
 	}
 }
