@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement")]
     public float moveSpeed;
-    private float velocity = 10f;
 
     public Transform orientation;
 
