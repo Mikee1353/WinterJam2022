@@ -16,9 +16,9 @@ public class PlayerAttack : MonoBehaviour
     {
         if(Time.time >= nextAttackTime)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                attack();
+                animator.SetBool("AttackBool", true);
                 nextAttackTime = Time.time + 1f / attackRate;
             }
         }
@@ -26,7 +26,7 @@ public class PlayerAttack : MonoBehaviour
     }
     private void attack()
     {
-        animator.SetTrigger("Attack");
+        
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         foreach(Collider2D enemy in hitEnemies)
         {
@@ -41,5 +41,8 @@ public class PlayerAttack : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
-
+    private void attackEnd()
+    {
+        animator.SetBool("AttackBool", false);
+    }
 }
