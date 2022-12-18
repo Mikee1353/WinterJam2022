@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class TriggerSceneChange : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         Scene sceneLoaded = SceneManager.GetActiveScene();
 
         SceneManager.LoadScene(sceneLoaded.buildIndex + 1);
     }
+
 }
